@@ -93,12 +93,17 @@ h3 {
 }
 
 #navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+
   display: flex;
   justify-content: space-between;
-  background-color: var(--color-green);
+  background-color: transparent;
   align-items: center;
-  color: var(--color-white);
-  padding: 0px 16px;
+  color: var(--color-black);
+  padding: 16px;
+  transition: all var(--annimation-duration) ease-in-out;
 }
 
 .navbar__menu {
@@ -112,9 +117,23 @@ h3 {
   top: 7px;
 }
 
+#navbar.navbar--dark {
+  background-color: var(--color-green);
+  padding: 5px;
+  color: var(--color-white);
+}
+
 .navbar__logo {
   font-size: var(--font-medium);
   font-weight: var(--weight-semi-bold);
+}
+
+#navbar__logo__name {
+  color: var(--color-black);
+}
+
+#navbar__logo__name.log--white {
+  color: var(--color-white);
 }
 
 .navbar__menu__item {
@@ -125,6 +144,10 @@ h3 {
 }
 
 .navbar__menu__item.active {
+  border: 1px solid var(--color-black);
+}
+
+.navbar__menu__item.active.scroll {
   border: 1px solid var(--color-white);
 }
 
@@ -133,7 +156,7 @@ h3 {
   right: 32px;
   top: 6px;
   font-size: 24px;
-  color: var(--color-white);
+  color: var(--color-black);
   display: none;
 }
 
@@ -141,6 +164,7 @@ h3 {
 #home {
   background-color: var(--color-beige);
   padding: 40px;
+  padding-top: 120px;
   text-align: center;
 }
 
