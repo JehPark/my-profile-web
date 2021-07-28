@@ -5,17 +5,21 @@
 const navbar = document.querySelector("#navbar");
 const navbarHeight = navbar.getBoundingClientRect().height;
 const navbarName = document.querySelector("#navbar__logo__name");
-const activeScroll = document.querySelector(".navbar__menu__item.active");
+const activeScroll = document.querySelectorAll(".navbar__menu__item");
 
 document.addEventListener('scroll', () => {
     if(window.scrollY > navbarHeight){
         navbar.classList.add('navbar--dark');
         navbarName.classList.add('log--white');
-        activeScroll.classList.add('scroll');
+        activeScroll.forEach((item) =>{
+            item.classList.add('scroll');
+        })
     }else{
         navbar.classList.remove('navbar--dark');
         navbarName.classList.remove('log--white');
-        activeScroll.classList.remove('scroll');
+        activeScroll.forEach((item) =>{
+            item.classList.remove('scroll');
+        })
     }
 })
 
@@ -72,6 +76,13 @@ workBtnContainer.addEventListener('click', (e) => {
     if (filter == null){
         return;
     }
+
+    //Remove selection from previous one and select new one
+
+    const active = document.querySelector('.category__btn.selected');
+    active.classList.remove('selected');
+    const target = e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
+    target.classList.add('selected');
     projectContainer.classList.add('anim-out');
     setTimeout(()=>{
         projects.forEach((project) => {
